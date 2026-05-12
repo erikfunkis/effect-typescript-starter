@@ -10,6 +10,7 @@ export const HealthResponse = Schema.Struct({
 export class SystemApi extends HttpApiGroup.make("system", { topLevel: true }).add(
   HttpApiEndpoint.get("health", "/health", {
     success: HealthResponse
+    
   })
 ) {}
 
