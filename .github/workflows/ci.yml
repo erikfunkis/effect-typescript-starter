@@ -30,11 +30,16 @@ jobs:
 
       - name: API smoke
         run: |
-          API_PORT=3737 vp run --filter @template/api dev &
+          set -euo pipefail
+          API_PORT=3737 node --import tsx apps/api/src/server.ts &
           API_PID=$!
+          cleanup() {
+            kill "$API_PID" 2>/dev/null || true
+            pkill -f "apps/api/src/server.ts" 2>/dev/null || true
+          }
+          trap cleanup EXIT
           sleep 3
           API_PORT=3737 vp run --filter @template/api smoke
-          kill $API_PID
 
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
