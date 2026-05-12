@@ -102,6 +102,25 @@ Baseline requirements:
 
 Template-specific overrides should be explicit and local (for example browser `lib` in web tsconfig).
 
+### Required Effect LSP Setup
+
+Effect LSP is required in this template to keep coding-agent loops fast and to surface Effect-specific diagnostics during editing and type-checking.
+
+Required baseline:
+
+- Install `@effect/language-service` as a dev dependency at the monorepo root.
+- Add plugin config in tsconfig (aligned with `effect-smol`):
+  - `"name": "@effect/language-service"`
+  - `"transform": "@effect/language-service/transform"`
+  - `"namespaceImportPackages": ["effect", "@effect/*"]`
+- Ensure editor uses workspace TypeScript version (not bundled editor TypeScript).
+- Add prepare hook:
+  - `"prepare": "effect-language-service patch"`
+
+Effect v4 beta adaptation:
+
+- Treat the vendored `repos/effect-smol` tsconfig/plugin shape as source-of-truth when docs and beta APIs drift.
+
 ## 9. Lint/Check Policy
 
 - `vp check` is the required quality gate before merge.
