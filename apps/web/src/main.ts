@@ -4,7 +4,7 @@ if (!healthElement) {
   throw new Error("Missing #health-status element")
 }
 
-const apiBaseUrl = import.meta.env.VITE_API_BASE_URL ?? "http://127.0.0.1:3000"
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL ?? "/api"
 
 const render = (message: string) => {
   healthElement.textContent = message

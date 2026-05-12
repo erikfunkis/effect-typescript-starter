@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "check": "tsc -p ../../tsconfig.json --noEmit",
+    "lint": "oxlint src --deny-warnings",
+    "check": "npm run lint && tsc -p ../../tsconfig.json --noEmit",
     "test": "echo \"TODO: add web tests\"",
     "build": "vite build"
   }

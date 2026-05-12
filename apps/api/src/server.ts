@@ -10,6 +10,7 @@ const port = Number(process.env.API_PORT ?? 3000)
 const SystemApiHandlers = HttpApiBuilder.group(
   Api,
   "system",
+  // oxlint-disable-next-line eslint/require-yield
   Effect.fn(function*(handlers) {
     return handlers.handle("health", () =>
       Effect.succeed({

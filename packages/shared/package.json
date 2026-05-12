@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "check": "echo \"TODO: add shared typecheck\"",
+    "lint": "echo \"No shared lint targets yet\"",
+    "check": "npm run lint && echo \"TODO: add shared typecheck\"",
     "test": "echo \"TODO: add shared tests\"",
     "build": "echo \"TODO: add shared build\""
   }

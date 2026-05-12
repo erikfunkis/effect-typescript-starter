@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "check": "echo \"TODO: add config validation\"",
+    "lint": "echo \"No config lint targets yet\"",
+    "check": "npm run lint && echo \"TODO: add config validation\"",
     "test": "echo \"TODO: add config tests\"",
     "build": "echo \"TODO: add config build\""
   }
