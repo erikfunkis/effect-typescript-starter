@@ -1,9 +1,6 @@
 {
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.preferences.autoImportFileExcludePatterns": [
-    "repos/**"
-  ],
-  "javascript.preferences.autoImportFileExcludePatterns": [
+  "js/ts.tsdk.path": "node_modules/typescript/lib",
+  "js/ts.preferences.autoImportFileExcludePatterns": [
     "repos/**"
   ],
   "files.exclude": {
@@ -14,5 +11,5 @@
   },
   "search.exclude": {
     "repos/**": true
-  }
+  },
 }
