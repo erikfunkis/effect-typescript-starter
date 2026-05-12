@@ -53,6 +53,12 @@ Run from repo root:
 - `packageManager` is pinned to `pnpm@10.17.1` for deterministic installs.
 - User workflow remains `vp`-first, even if you normally use npm.
 
+## Effect LSP baseline
+
+- Effect language service is required for this template.
+- Workspace TypeScript is required (configured in `.vscode/settings.json`).
+- See [docs/effect-devtools.md](/Users/erikwiberg/work/typescript-effect-template/docs/effect-devtools.md) for setup details and Effect v4 beta drift policy.
+
 ## Current status
 
 This is the shell for PLF1-123. App/runtime implementation slices come next.

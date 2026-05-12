@@ -5,11 +5,17 @@
   "description": "Vite+ fullstack TypeScript starter centered on Effect v4 beta",
   "license": "ISC",
   "packageManager": "pnpm@10.17.1",
+  "devDependencies": {
+    "@effect/language-service": "0.85.1",
+    "effect": "4.0.0-beta.66",
+    "typescript": "5.9.3"
+  },
   "scripts": {
-    "dev": "vp --recursive run dev",
-    "check": "vp --recursive run check",
-    "test": "vp --recursive run test",
-    "build": "vp --recursive run build",
+    "prepare": "effect-language-service patch",
+    "dev": "vp run --recursive dev",
+    "check": "vp run --recursive check",
+    "test": "vp run --recursive test",
+    "build": "vp run --recursive build",
     "test:e2e": "vp run test:e2e --filter @template/e2e",
     "deps:check": "vp outdated"
   }
