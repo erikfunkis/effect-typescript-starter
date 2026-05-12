@@ -17,4 +17,4 @@ if (health.status !== "ok" || health.service !== "api" || health.version !== "0.
   throw new Error(`Smoke check failed: unexpected payload ${JSON.stringify(health)}`)
 }
 
-console.log("[smoke] /health typed contract OK")
+console.log("[smoke] RPC health contract OK")

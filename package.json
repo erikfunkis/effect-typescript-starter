@@ -11,6 +11,8 @@
     "@effect/vitest": "4.0.0-beta.66",
     "@playwright/cli": "^0.1.13",
     "@playwright/test": "1.59.1",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
     "@types/node": "24.9.2",
     "effect": "4.0.0-beta.66",
     "oxlint": "1.42.0",
@@ -28,5 +30,10 @@
     "build": "vp run --recursive build",
     "test:e2e": "vp run --filter @template/e2e test:e2e",
     "deps:check": "vp outdated"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "better-sqlite3"
+    ]
   }
 }

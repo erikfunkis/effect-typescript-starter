@@ -12,7 +12,7 @@
   "scripts": {
     "lint": "oxlint src --deny-warnings",
     "check": "npm run lint && tsc -p ../../tsconfig.json --noEmit",
-    "test": "ROOT=$(git rev-parse --show-toplevel) && vitest run \"$ROOT/packages/shared/test/health.test.ts\" --config \"$ROOT/vite.config.ts\"",
+    "test": "ROOT=$(git rev-parse --show-toplevel) && vitest run \"$ROOT/packages/shared/test\" --config \"$ROOT/vite.config.ts\"",
     "build": "echo \"TODO: add shared build\""
   }
 }
