@@ -4,9 +4,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "echo \"TODO: scaffold Effect v4 API app\"",
-    "check": "echo \"TODO: add api check\"",
+    "dev": "node --import tsx src/server.ts",
+    "check": "tsc -p ../../tsconfig.json --noEmit",
     "test": "echo \"TODO: add api tests\"",
-    "build": "echo \"TODO: add api build\""
+    "build": "echo \"TODO: add api build\"",
+    "smoke": "node --import tsx src/smoke.ts"
   }
 }
