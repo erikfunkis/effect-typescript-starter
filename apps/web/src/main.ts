@@ -1,3 +1,6 @@
+import { Effect } from "effect"
+import { ApiClient, makeApiClientLayer } from "@template/shared"
+
 const healthElement = document.querySelector<HTMLParagraphElement>("#health-status")
 
 if (!healthElement) {
@@ -10,26 +13,17 @@ const render = (message: string) => {
   healthElement.textContent = message
 }
 
+const program = Effect.gen(function*() {
+  const client = yield* ApiClient
+  return yield* client.health()
+}).pipe(
+  Effect.provide(makeApiClientLayer(apiBaseUrl))
+)
+
 const run = async () => {
   try {
-    const response = await fetch(`${apiBaseUrl}/health`)
-    if (!response.ok) {
-      render(`API health failed (${response.status})`)
-      return
-    }
-
-    const payload = (await response.json()) as {
-      status?: string
-      service?: string
-      version?: string
-    }
-
-    if (payload.status === "ok" && payload.service === "api") {
-      render(`API healthy: ${payload.service} ${payload.version ?? ""}`.trim())
-      return
-    }
-
-    render(`API health returned unexpected payload: ${JSON.stringify(payload)}`)
+    const health = await Effect.runPromise(program)
+    render(`API healthy: ${health.service} ${health.version}`)
   } catch (error) {
     render(`API unreachable: ${error instanceof Error ? error.message : String(error)}`)
   }

@@ -1,19 +1,20 @@
+import { Effect } from "effect"
+import { ApiClient, makeApiClientLayer } from "@template/shared"
+
 const port = Number(process.env.API_PORT ?? 3000)
-const url = `http://127.0.0.1:${port}/health`
+const baseUrl = `http://127.0.0.1:${port}`
 
-const response = await fetch(url)
-if (!response.ok) {
-  throw new Error(`Smoke check failed: expected 200, got ${response.status}`)
+const program = Effect.gen(function*() {
+  const client = yield* ApiClient
+  return yield* client.health()
+}).pipe(
+  Effect.provide(makeApiClientLayer(baseUrl))
+)
+
+const health = await Effect.runPromise(program)
+
+if (health.status !== "ok" || health.service !== "api" || health.version !== "0.1.0") {
+  throw new Error(`Smoke check failed: unexpected payload ${JSON.stringify(health)}`)
 }
 
-const body = await response.json() as {
-  status?: string
-  service?: string
-  version?: string
-}
-
-if (body.status !== "ok" || body.service !== "api" || body.version !== "0.1.0") {
-  throw new Error(`Smoke check failed: unexpected payload ${JSON.stringify(body)}`)
-}
-
-console.log("[smoke] /health OK")
+console.log("[smoke] /health typed contract OK")

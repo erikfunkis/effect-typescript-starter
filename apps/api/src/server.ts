@@ -3,7 +3,7 @@ import { Effect, Layer } from "effect"
 import { HttpRouter } from "effect/unstable/http"
 import { HttpApiBuilder } from "effect/unstable/httpapi"
 import { createServer } from "node:http"
-import { Api } from "./api.js"
+import { Api } from "@template/shared"
 
 const port = Number(process.env.API_PORT ?? 3000)
 

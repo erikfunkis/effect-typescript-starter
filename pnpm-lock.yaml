@@ -39,13 +39,25 @@ importers:
         specifier: 0.1.20
         version: 0.1.20(@types/node@24.9.2)(esbuild@0.27.7)(tsx@4.20.6)(typescript@5.9.3)(vite@7.3.2(@types/node@24.9.2)(lightningcss@1.32.0)(tsx@4.20.6)(yaml@2.9.0))(yaml@2.9.0)
 
-  apps/api: {}
+  apps/api:
+    dependencies:
+      '@template/shared':
+        specifier: workspace:*
+        version: link:../../packages/shared
 
-  apps/web: {}
+  apps/web:
+    dependencies:
+      '@template/shared':
+        specifier: workspace:*
+        version: link:../../packages/shared
 
   packages/config: {}
 
-  packages/shared: {}
+  packages/shared:
+    dependencies:
+      effect:
+        specifier: 4.0.0-beta.66
+        version: 4.0.0-beta.66
 
   tests/e2e: {}
 

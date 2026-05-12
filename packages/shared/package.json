@@ -3,9 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "effect": "4.0.0-beta.66"
+  },
   "scripts": {
-    "lint": "echo \"No shared lint targets yet\"",
-    "check": "npm run lint && echo \"TODO: add shared typecheck\"",
+    "lint": "oxlint src --deny-warnings",
+    "check": "npm run lint && tsc -p ../../tsconfig.json --noEmit",
     "test": "echo \"TODO: add shared tests\"",
     "build": "echo \"TODO: add shared build\""
   }

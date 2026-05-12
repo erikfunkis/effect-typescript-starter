@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "dependencies": {
+    "@template/shared": "workspace:*"
+  },
   "scripts": {
     "dev": "node --import tsx src/server.ts",
     "lint": "oxlint src --deny-warnings",
