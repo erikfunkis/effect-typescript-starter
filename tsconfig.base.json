@@ -3,6 +3,7 @@
   "compilerOptions": {
     "target": "ES2022",
     "module": "NodeNext",
+    "jsx": "react-jsx",
     "moduleDetection": "force",
     "verbatimModuleSyntax": true,
     "allowJs": false,

@@ -1,0 +1,31 @@
+.app-shell {
+  font-family: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', serif;
+  margin: 2rem auto;
+  max-width: 40rem;
+}
+
+.todo-composer {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.todo-list {
+  list-style: none;
+  margin-top: 1rem;
+  padding: 0;
+}
+
+.todo-list-item {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.todo-title {
+  flex: 1;
+}
+
+.todo-title-completed {
+  text-decoration: line-through;
+}
