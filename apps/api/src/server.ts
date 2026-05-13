@@ -1,30 +1,27 @@
 import { NodeHttpServer, NodeRuntime } from '@effect/platform-node';
 import { SqliteClient } from '@effect/sql-sqlite-node';
 import { Effect, Layer } from 'effect';
-import { HttpRouter, HttpServerResponse } from 'effect/unstable/http';
+import { HttpRouter } from 'effect/unstable/http';
 import { Reactivity } from 'effect/unstable/reactivity';
 import { RpcServer, RpcSerialization } from 'effect/unstable/rpc';
 import { mkdirSync } from 'node:fs';
 import { createServer } from 'node:http';
 import { loadApiConfig } from '../../../packages/config/src/index.js';
 import { TodoRpcs } from '@template/shared';
+import { makeHealthRoute, makeHealthRpcHandler } from './features/health/health.js';
 import { makeTodoRpcHandlers } from './features/todos/rpc.js';
 import { TodoRepository } from './features/todos/repository.js';
 
 const version = '0.1.0';
 
-const TodoRpcHandlers = makeTodoRpcHandlers(version);
+const TodoRpcHandlers = makeTodoRpcHandlers(makeHealthRpcHandler(version));
 
 const TodoRpcServer = RpcServer.layer(TodoRpcs).pipe(Layer.provide(TodoRpcHandlers));
 
 const RpcProtocol = RpcServer.layerProtocolHttp({ path: '/rpc' }).pipe(
   Layer.provide(HttpRouter.layer),
 );
-const HealthRoute = HttpRouter.add(
-  'GET',
-  '/health',
-  Effect.succeed(HttpServerResponse.jsonUnsafe({ status: 'ok', service: 'api', version })),
-);
+const HealthRoute = makeHealthRoute(version);
 const HttpRoutes = Layer.mergeAll(RpcProtocol, HealthRoute);
 
 const config = await Effect.runPromise(loadApiConfig());
