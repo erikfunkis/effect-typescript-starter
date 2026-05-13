@@ -2,13 +2,14 @@ import { defineConfig } from 'vite-plus';
 
 export default defineConfig({
   fmt: {
-    ignorePatterns: ['repos/**', '**/dist/**'],
+    ignorePatterns: ['.agents/**', 'repos/**', '**/dist/**'],
     singleQuote: true,
     semi: true,
     sortPackageJson: true,
   },
   lint: {
     ignorePatterns: [
+      '.agents/**',
       'repos/**',
       '**/node_modules/**',
       '**/dist/**',

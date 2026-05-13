@@ -4,13 +4,16 @@ import { Todo, TodoNotFound, UpdateTodoInput } from '@template/shared';
 import { mapRowToTodo } from './model.js';
 import type { TodoRow } from './model.js';
 
-export class TodoRepository extends Context.Service<TodoRepository, {
-  readonly list: Effect.Effect<ReadonlyArray<Todo>>
-  create(input: { readonly title: string }): Effect.Effect<Todo>
-  findById(id: string): Effect.Effect<TodoRow, TodoNotFound>
-  update(input: UpdateTodoInput): Effect.Effect<Todo, TodoNotFound>
-  remove(input: { readonly id: string }): Effect.Effect<Todo, TodoNotFound>
-}>()('template/api/features/todos/TodoRepository') {
+export class TodoRepository extends Context.Service<
+  TodoRepository,
+  {
+    readonly list: Effect.Effect<ReadonlyArray<Todo>>;
+    create(input: { readonly title: string }): Effect.Effect<Todo>;
+    findById(id: string): Effect.Effect<TodoRow, TodoNotFound>;
+    update(input: UpdateTodoInput): Effect.Effect<Todo, TodoNotFound>;
+    remove(input: { readonly id: string }): Effect.Effect<Todo, TodoNotFound>;
+  }
+>()('template/api/features/todos/TodoRepository') {
   static readonly layer = Layer.effect(
     TodoRepository,
     Effect.gen(function* () {
@@ -24,12 +27,15 @@ export class TodoRepository extends Context.Service<TodoRepository, {
         updated_at TEXT NOT NULL
       )`.pipe(Effect.orDie);
 
-      const list = sql<TodoRow>`SELECT id, title, completed, created_at, updated_at FROM todos ORDER BY created_at ASC`.pipe(
-        Effect.orDie,
-        Effect.map((rows) => rows.map(mapRowToTodo)),
-      );
+      const list =
+        sql<TodoRow>`SELECT id, title, completed, created_at, updated_at FROM todos ORDER BY created_at ASC`.pipe(
+          Effect.orDie,
+          Effect.map((rows) => rows.map(mapRowToTodo)),
+        );
 
-      const create = Effect.fn('TodoRepository.create')(function* (input: { readonly title: string }) {
+      const create = Effect.fn('TodoRepository.create')(function* (input: {
+        readonly title: string;
+      }) {
         const now = new Date().toISOString();
         const id = crypto.randomUUID();
         yield* sql`INSERT INTO todos ${sql.insert({
@@ -39,7 +45,13 @@ export class TodoRepository extends Context.Service<TodoRepository, {
           created_at: now,
           updated_at: now,
         })}`.pipe(Effect.orDie);
-        return new Todo({ id, title: input.title, completed: false, createdAt: now, updatedAt: now });
+        return new Todo({
+          id,
+          title: input.title,
+          completed: false,
+          createdAt: now,
+          updatedAt: now,
+        });
       });
 
       const findById = Effect.fn('TodoRepository.findById')(function* (id: string) {
