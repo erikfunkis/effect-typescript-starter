@@ -1,5 +1,22 @@
 # Agent Instructions
 
+For domain language, read `CONTEXT.md`.
+
+Do not treat `README.md` as the conceptual source-of-truth for architecture decisions, it's for human developers onboarding to the repository.
+
+## Core Agent Loop (After Each Unit of Work)
+
+Run from repository root unless a narrower scope is explicitly requested:
+
+1. `vp run check`
+2. `vp run test`
+3. If backend/API behavior changed, run API smoke check:
+   - Start API: `API_PORT=3737 vp run --filter @template/api dev`
+   - Smoke: `API_PORT=3737 vp run --filter @template/api smoke`
+4. If user-visible behavior changed, run: `vp run test:e2e` (or `vp run test:e2e:smoke` for fast validation)
+
+When time is constrained, at minimum run `vp run check` and explain any skipped gates.
+
 ## Vendored Repositories
 
 This project vendors external repositories under `repos/` as read-only reference material for coding agents.
