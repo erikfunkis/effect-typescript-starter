@@ -21,6 +21,10 @@ export const TodoList = ({ todos, isBusy, onToggle, onRemove }: TodoListProps) =
         <span className={todo.completed ? 'todo-title todo-title-completed' : 'todo-title'}>
           {todo.title}
         </span>
+        {/* Note that property is already a Date,  thanks to Schema.DateFromString handling encode/decode */}
+        <time className="todo-timestamp" dateTime={todo.updatedAt.toISOString()}>
+          {`Updated at: ${todo.updatedAt.toLocaleString()}`}
+        </time>
         <button disabled={isBusy} onClick={() => void onRemove(todo)} type="button">
           Delete
         </button>
