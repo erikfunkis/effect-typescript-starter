@@ -74,6 +74,7 @@ Run from repository root:
 - `vp run test`
 - `vp run build`
 - `vp run test:e2e`
+- `vp run test:e2e:smoke`
 - `vp run deps:check`
 
 Notes:
