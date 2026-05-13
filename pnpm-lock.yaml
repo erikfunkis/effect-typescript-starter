@@ -56,6 +56,9 @@ importers:
       '@effect/sql-sqlite-node':
         specifier: 4.0.0-beta.66
         version: 4.0.0-beta.66(effect@4.0.0-beta.66)
+      '@template/config':
+        specifier: workspace:*
+        version: link:../../packages/config
       '@template/shared':
         specifier: workspace:*
         version: link:../../packages/shared

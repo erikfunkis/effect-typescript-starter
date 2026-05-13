@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@effect/sql-sqlite-node": "4.0.0-beta.66",
+    "@template/config": "workspace:*",
     "@template/shared": "workspace:*"
   }
 }

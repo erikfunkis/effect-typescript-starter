@@ -6,7 +6,7 @@ import { Reactivity } from 'effect/unstable/reactivity';
 import { RpcServer, RpcSerialization } from 'effect/unstable/rpc';
 import { mkdirSync } from 'node:fs';
 import { createServer } from 'node:http';
-import { loadApiConfig } from '../../../packages/config/src/index.js';
+import { loadApiConfig } from '@template/config';
 import { TodoRpcs } from '@template/shared';
 import { makeHealthRoute, makeHealthRpcHandler } from './features/health/health.js';
 import { makeTodoRpcHandlers } from './features/todos/rpc.js';

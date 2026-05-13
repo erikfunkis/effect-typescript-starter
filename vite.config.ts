@@ -8,6 +8,7 @@ export default defineConfig({
     sortPackageJson: true,
   },
   lint: {
+    plugins: ['import'],
     ignorePatterns: [
       '.agents/**',
       'repos/**',
@@ -20,6 +21,38 @@ export default defineConfig({
       typeAware: true,
       typeCheck: true,
     },
+    rules: {
+      'import/no-cycle': 'error',
+      'eslint/no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            {
+              group: ['@template/api/src/**', 'apps/api/src/**'],
+              message: 'Import through public package interfaces, not Application internals.',
+            },
+            {
+              group: ['@template/web/src/**', 'apps/web/src/**'],
+              message: 'Import through public package interfaces, not Application internals.',
+            },
+          ],
+        },
+      ],
+    },
+    overrides: [
+      {
+        files: ['apps/**/src/**', 'packages/**/src/**'],
+        rules: {
+          'import/no-relative-parent-imports': 'error',
+        },
+      },
+      {
+        files: ['**/*.{test,spec}.{ts,tsx,js,jsx,mts,cts}'],
+        rules: {
+          'import/no-relative-parent-imports': 'off',
+        },
+      },
+    ],
   },
   test: {
     passWithNoTests: true,
