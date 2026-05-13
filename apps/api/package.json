@@ -7,7 +7,7 @@
     "dev": "node --import tsx src/server.ts",
     "lint": "vp lint src",
     "check": "npm run lint && tsc -p ../../tsconfig.json --noEmit",
-    "test": "echo \"TODO: add api tests\"",
+    "test": "vitest run test",
     "build": "echo \"TODO: add api build\"",
     "smoke": "node --import tsx src/smoke.ts"
   },
