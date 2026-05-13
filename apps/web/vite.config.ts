@@ -1,4 +1,4 @@
-import { defineConfig } from "vite"
+import { defineConfig } from "vite";
 
 export default defineConfig({
   preview: {
@@ -8,9 +8,9 @@ export default defineConfig({
       "/api": {
         target: "http://127.0.0.1:3737",
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, "")
-      }
-    }
+        rewrite: (path) => path.replace(/^\/api/, ""),
+      },
+    },
   },
   server: {
     host: "127.0.0.1",
@@ -19,8 +19,8 @@ export default defineConfig({
       "/api": {
         target: "http://127.0.0.1:3737",
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, "")
-      }
-    }
-  }
-})
+        rewrite: (path) => path.replace(/^\/api/, ""),
+      },
+    },
+  },
+});

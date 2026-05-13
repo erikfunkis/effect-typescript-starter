@@ -1,8 +1,8 @@
-import { Context, Effect, Layer } from "effect"
-import { FetchHttpClient, HttpClient, HttpClientRequest } from "effect/unstable/http"
-import { RpcClient, RpcGroup, RpcSerialization } from "effect/unstable/rpc"
-import type { RpcClientError } from "effect/unstable/rpc/RpcClientError"
-import { TodoRpcs } from "./todo-rpc.js"
+import { Context, Effect, Layer } from "effect";
+import { FetchHttpClient, HttpClient, HttpClientRequest } from "effect/unstable/http";
+import { RpcClient, RpcGroup, RpcSerialization } from "effect/unstable/rpc";
+import type { RpcClientError } from "effect/unstable/rpc/RpcClientError";
+import { TodoRpcs } from "./todo-rpc.js";
 
 export class ApiClient extends Context.Service<
   ApiClient,
@@ -14,9 +14,9 @@ export const makeApiClientLayer = (baseUrl: string) =>
     Layer.provide(
       RpcClient.layerProtocolHttp({
         url: `${baseUrl}/rpc`,
-        transformClient: HttpClient.mapRequest(HttpClientRequest.acceptJson)
-      })
+        transformClient: HttpClient.mapRequest(HttpClientRequest.acceptJson),
+      }),
     ),
     Layer.provide(RpcSerialization.layerNdjson),
-    Layer.provide(FetchHttpClient.layer)
-  )
+    Layer.provide(FetchHttpClient.layer),
+  );

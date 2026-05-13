@@ -3,10 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "dependencies": {
-    "@effect/sql-sqlite-node": "4.0.0-beta.66",
-    "@template/shared": "workspace:*"
-  },
   "scripts": {
     "dev": "node --import tsx src/server.ts",
     "lint": "vp lint src",
@@ -14,5 +10,9 @@
     "test": "echo \"TODO: add api tests\"",
     "build": "echo \"TODO: add api build\"",
     "smoke": "node --import tsx src/smoke.ts"
+  },
+  "dependencies": {
+    "@effect/sql-sqlite-node": "4.0.0-beta.66",
+    "@template/shared": "workspace:*"
   }
 }

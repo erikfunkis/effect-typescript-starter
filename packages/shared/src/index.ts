@@ -1,4 +1,4 @@
-export { ApiClient, makeApiClientLayer } from "./client.js"
+export { ApiClient, makeApiClientLayer } from "./client.js";
 export {
   CreateTodoInput,
   DeleteTodoInput,
@@ -6,5 +6,5 @@ export {
   Todo,
   TodoNotFound,
   TodoRpcs,
-  UpdateTodoInput
-} from "./todo-rpc.js"
+  UpdateTodoInput,
+} from "./todo-rpc.js";

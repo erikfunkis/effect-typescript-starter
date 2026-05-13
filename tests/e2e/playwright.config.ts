@@ -1,4 +1,4 @@
-import { defineConfig, devices } from "@playwright/test"
+import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
   testDir: "./specs",
@@ -7,13 +7,13 @@ export default defineConfig({
   globalSetup: "./global-setup.ts",
   globalTeardown: "./global-teardown.ts",
   use: {
-    baseURL: "http://127.0.0.1:4173"
+    baseURL: "http://127.0.0.1:4173",
   },
   projects: [
     {
       name: "chromium",
-      use: { ...devices["Desktop Chrome"] }
-    }
+      use: { ...devices["Desktop Chrome"] },
+    },
   ],
   webServer: [
     {
@@ -23,16 +23,16 @@ export default defineConfig({
         APP_PROFILE: process.env.APP_PROFILE ?? "test",
         API_HOST: process.env.API_HOST ?? "127.0.0.1",
         API_PORT: process.env.API_PORT ?? "3737",
-        TODO_DB_PATH: process.env.TODO_DB_PATH ?? ".data/todos.test.sqlite"
+        TODO_DB_PATH: process.env.TODO_DB_PATH ?? ".data/todos.test.sqlite",
       },
       reuseExistingServer: !process.env.CI,
-      timeout: 120_000
+      timeout: 120_000,
     },
     {
       command: "vp run --filter @template/web build && vp run --filter @template/web e2e:preview",
       url: "http://127.0.0.1:4173",
       reuseExistingServer: !process.env.CI,
-      timeout: 120_000
-    }
-  ]
-})
+      timeout: 120_000,
+    },
+  ],
+});

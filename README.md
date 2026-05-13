@@ -47,15 +47,15 @@ vp run dev
 
 ## Tested versions matrix
 
-| Component | Version |
-|---|---|
-| `vite` | `7.3.2` |
-| `effect` | `4.0.0-beta.66` |
-| `@effect/platform-node` | `4.0.0-beta.66` |
-| `@effect/language-service` | `0.85.1` |
-| `@playwright/test` | `1.59.1` |
-| `typescript` | `5.9.3` |
-| `pnpm` (`packageManager`) | `10.17.1` |
+| Component                  | Version         |
+| -------------------------- | --------------- |
+| `vite`                     | `7.3.2`         |
+| `effect`                   | `4.0.0-beta.66` |
+| `@effect/platform-node`    | `4.0.0-beta.66` |
+| `@effect/language-service` | `0.85.1`        |
+| `@playwright/test`         | `1.59.1`        |
+| `typescript`               | `5.9.3`         |
+| `pnpm` (`packageManager`)  | `10.17.1`       |
 
 ## Effect v4 beta disclaimer
 

@@ -4,7 +4,17 @@
   "private": true,
   "description": "Vite+ fullstack TypeScript starter centered on Effect v4 beta",
   "license": "ISC",
-  "packageManager": "pnpm@10.17.1",
+  "scripts": {
+    "prepare": "effect-language-service patch",
+    "dev": "vp run --recursive dev",
+    "lint": "vp run --recursive lint",
+    "check": "vp run --recursive check",
+    "test": "vp run --recursive test",
+    "build": "vp run --recursive build",
+    "test:e2e": "vp run --filter @template/e2e test:e2e",
+    "test:e2e:smoke": "vp run --filter @template/e2e test:e2e:smoke",
+    "deps:check": "vp outdated"
+  },
   "devDependencies": {
     "@effect/language-service": "0.86.1",
     "@effect/platform-node": "4.0.0-beta.66",
@@ -21,17 +31,7 @@
     "vite-plus": "0.1.21",
     "vitest": "4.1.6"
   },
-  "scripts": {
-    "prepare": "effect-language-service patch",
-    "dev": "vp run --recursive dev",
-    "lint": "vp run --recursive lint",
-    "check": "vp run --recursive check",
-    "test": "vp run --recursive test",
-    "build": "vp run --recursive build",
-    "test:e2e": "vp run --filter @template/e2e test:e2e",
-    "test:e2e:smoke": "vp run --filter @template/e2e test:e2e:smoke",
-    "deps:check": "vp outdated"
-  },
+  "packageManager": "pnpm@10.17.1",
   "pnpm": {
     "onlyBuiltDependencies": [
       "better-sqlite3"
